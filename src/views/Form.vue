@@ -1,12 +1,7 @@
 <template>
   <div>
     <b-form @submit.prevent="onSubmit">
-      <b-form-group
-        id="input-group-1"
-        label
-        label-for="input-1"
-        description="We'll never share your email with anyone else."
-      >
+      <b-form-group id="input-group-1" label label-for="input-1">
         <b-form-input
           id="input-1"
           type="number"
