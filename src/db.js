@@ -15,6 +15,8 @@ export const db = firebase
   })
   .firestore()
 
+export const authProvider = new firebase.auth.GoogleAuthProvider();  
+
 // Export types that exists in Firestore
 // This is not always necessary, but it's used in other examples
 const { Timestamp, GeoPoint } = firebase.firestore

@@ -9,21 +9,22 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    user: {},
+    user: null,
     token: ""
   },
   mutations: {
     UPDATE_TOKEN(state, payload) {
-      this.token = payload;
+      this.state.token = payload;
     },
     UPDATE_USER(state, payload) {
-      this.user = payload;
+      this.state.user = payload;
     }
   },
   actions: {
-    // signIn() {
-      
-    // },
+    signIn({ commit }, payload) {
+      commit("UPDATE_TOKEN", payload.token);
+      commit("UPDATE_USER", payload.user)
+    },
     // signinAfterRedirect({ commit }) {
       
     // }

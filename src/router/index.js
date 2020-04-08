@@ -13,13 +13,13 @@ Vue.use(VueRouter)
     component: Home
   },
   {
-    path: '/about',
-    name: 'About',
+    path: '/form',
+    name: 'Form',
     meta: { requiresAuth: true },
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/Form.vue')
   },
   {
     path: '/login',
@@ -37,10 +37,12 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  const currentUser = store.user
+  const currentUser = store.state.user
   const requiresAuth = to.matched.some(rec => rec.meta.requiresAuth);
-
-  if(requiresAuth && !currentUser) next('login');
+  console.log("USER", currentUser);
+  console.log("user truthy", !currentUser)
+  if (requiresAuth && !currentUser) next('login');
+  // else if(!requiresAuth && currentUser) next('about');
   else next();
 })
 
